@@ -9,6 +9,15 @@ and prints the result to the terminal window.
 
 """
 
+def get_number(prompt_text: str) -> float:
+    while True:
+        try:
+            input_number = float(input(prompt_text))
+            return input_number
+        
+        except ValueError:
+            print("Invalid input. Please input an actual number.")
+
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
     Function that takes in two numbers and an operation (add, subtract, multiply, divide),
@@ -33,17 +42,17 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
         if num2 != 0:
             return num1 / num2
         else:
-            raise ValueError("Cannot divide by zero.")
+            print("Cannot divide by zero.")
     else:
-        raise ValueError("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
+        print("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
 
 def main():
     
     print(f"===== Simple Calculator =====")
 
     # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    num1 = get_number("Enter first number: ")
+    num2 = get_number("Enter second number: ")
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
